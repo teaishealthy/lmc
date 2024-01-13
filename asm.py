@@ -188,10 +188,11 @@ def process_instruction(
             new_instruction = " ".join(instruction_split[1:])
 
             if not new_instruction.strip():
+                spaces = len(instruction) - len(instruction.lstrip())
                 syntax_error(
                     line_number,
                     instruction,
-                    " " + " " * len(instruction_split[0]) + "^",
+                    " " + " " * (len(instruction_split[0]) + spaces) + "^",
                     "missing instruction",
                 )
                 exit(1)
